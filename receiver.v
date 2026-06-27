@@ -1,6 +1,10 @@
-module receiver(input clk,rst,
-               input [7:0]din,
-               output reg [7:0]dout,
+module receiver #(
+    parameter WIDTH = 8,
+    parameter DEPTH = 8,
+    parameter ADDR_WIDTH = $clog2(DEPTH)
+) (input clk,rst,
+               input [WIDTH-1:0]din,
+               output reg [WIDTH-1:0]dout,
                output reg read_en
               );
   parameter s0=2'b00;
