@@ -42,7 +42,7 @@ initial begin
 
     reset();
 
-    // ---------------- TEST 1: WRITE ----------------
+    // Test Write
     write_en = 1;
     din = 8'd10;
     #10;
@@ -54,7 +54,7 @@ initial begin
     else
         $display("FAIL: WRITE TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 2: READ ----------------
+    // TEST  READ
     read_en = 1;
     #10;
     read_en = 0;
@@ -65,7 +65,7 @@ initial begin
     else
         $display("FAIL: READ TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 3: FULL ----------------
+    // TEST 3: FULL 
     write_en = 1;
 
     din = 8'd10; #10;
@@ -85,7 +85,7 @@ initial begin
     else
         $display("FAIL: FULL TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 4: OVERFLOW ----------------
+    //TEST 4: OVERFLOW 
     write_en = 1;
     din = 8'd99;
     #10;
@@ -97,7 +97,7 @@ initial begin
     else
         $display("FAIL: OVERFLOW TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 5: EMPTY ----------------
+    // TEST 5: EMPTY 
     read_en = 1;
 
     repeat (8) #10;
@@ -110,7 +110,7 @@ initial begin
     else
         $display("FAIL: EMPTY TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 6: UNDERFLOW ----------------
+    //  TEST 6: UNDERFLOW 
     read_en = 1;
     #10;
     read_en = 0;
@@ -121,7 +121,7 @@ initial begin
     else
         $display("FAIL: UNDERFLOW TEST count=%0d", DUT.count);
 
-    // ---------------- TEST 7: SIMULTANEOUS READ/WRITE ----------------
+    // TEST 7: SIMULTANEOUS READ/WRITE
     write_en = 1;
     read_en  = 0;
 
