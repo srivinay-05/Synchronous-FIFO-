@@ -1,20 +1,24 @@
 `timescale 1ns/1ps
-module top(
+module top #(
+    parameter WIDTH = 8,
+    parameter DEPTH = 8,
+    parameter ADDR_WIDTH = $clog2(DEPTH)
+) (
 
 input clk,
 input rst,
 
-input [7:0] din,
+input [WIDTH-1:0] din,
 
-output [7:0] final_out
+output [WIDTH-1:0] final_out
 
 );
 
-wire [7:0] sender_to_fifo;
+wire  sender_to_fifo;
 
-wire sender_write;
+wire [WIDTH-1:0] sender_write;
 
-wire [7:0] fifo_to_receiver;
+wire [WIDTH-1:0] fifo_to_receiver;
 
 wire receiver_read;
 
